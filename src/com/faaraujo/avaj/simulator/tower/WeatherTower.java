@@ -1,6 +1,8 @@
 package com.faaraujo.avaj.simulator;
 
-public class WeatherTower {
+import com.faaraujo.avaj.simulator.Tower;
+
+public class WeatherTower extends Tower {
 
   public String getWeather(Coodernates coodernates) {
 

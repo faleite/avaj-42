@@ -1,6 +1,8 @@
 package com.faaraujo.avaj.simulator;
 
-public class Aircraft {
+import com.faaraujo.avaj.simulator.Flyable;
+
+public class Aircraft extends Flyable {
 
   protected Long id;
 

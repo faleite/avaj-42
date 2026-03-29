@@ -51,6 +51,11 @@ Métodos | <--
 
 
 ### Notações de relacionamento entre as classes
+- WeatherTower  *extends*  Tower          (herança de classe)
+- Tower         *agrega*   Flyable        (aggregation — List<Flyable>)
+- Aircraft      *extends*  Flyable        (realização — Flyable é abstrata)
+- Aircraft      *compõe*   Coordinates    (composition — campo direto)
+- Helicopter/JetPlane/Balloon *extends* Aircraft  (herança de classe)
 
 **`<|--` — Herança (extensão)**
 ```
@@ -127,3 +132,132 @@ comece com os padrões mais simples e mais comuns:*
 - Observer (274)
 - Strategy (292)
 - Template Method (301)
+
+## Estrutura de Diretórios
+
+- Existem essencialmente três filosofias.
+
+*Veja como o mesmo projeto hipotético ficaria em cada uma:*
+<img src="dcs/dir_structures_comparison.svg" width=680>
+
+### A estrutura de diretório deste projeto 
+*— e por que cada pasta existe*
+
+```bash
+simulator/
+│
+├── Main.java                  ← ponto de entrada, orquestra tudo
+│
+├── model/                     ← ENTIDADES DE DOMÍNIO
+│   ├── Coordinates.java       │  o que o sistema representa
+│   ├── Aircraft.java          │  (equivalente ao "model" do MVC,
+│   ├── Helicopter.java        │   mas sem ORM/JPA)
+│   ├── JetPlane.java          │
+│   └── Balloon.java           │
+│
+├── flyable/                   ← CONTRATO / INTERFACE
+│   └── Flyable.java           │  define O QUE toda aeronave deve saber fazer
+│                             
+│
+├── tower/                     ← PADRÃO OBSERVER
+│   ├── Tower.java             │  o "subject" que notifica
+│   └── WeatherTower.java      │  (é puro design pattern)
+│
+├── provider/                  ← SERVIÇO SINGLETON
+│   └── WeatherProvider.java   │  lógica isolada de geração de clima
+│                              │  (análogo ao "service" do MVC, mas sem injeção)
+│
+└── factory/                   ← PADRÃO FACTORY
+    └── AircraftFactory.java   ← cria objetos sem expor o "new"
+                               │ (é puro OOP pattern)
+```
+
+Neste caso estrutura de diretórios deve espelhar o design do sistema.
+Quando o design é orientado a padrões OOP (Observer, Factory, Singleton),
+as pastas devem refletir esses papéis 
+— E não camadas técnicas de um framework, que não existe aqui.
+
+Sua correspondência direta:
+
+| Pasta | Origem no UML |
+|---|---|
+| `model/` | Classes `Aircraft`, `Coordinates`, subtipos |
+| `flyable/` | Classe abstrata `Flyable` |
+| `tower/` | Classes `Tower` e `WeatherTower` |
+| `provider/` | Classe `WeatherProvider <<Singleton>>` |
+| `factory/` | Classe `AircraftFactory <<Singleton>>` |
+
+## Análise de UML para organização de diretórios
+
+### A pergunta certa ao olhar um UML
+
+Não é *"o que essas classes fazem?"* — é **"por que essas classes existem juntas?"**
+
+Existem exatamente 4 perguntas que você faz para cada classe ou grupo de classes:
+
+<img src="dcs/uml_reading_questions.svg" widht=680>
+
+Agora vamos aplicar isso **classe por classe** no UML do projeto. Vou te guiar pelo raciocínio — não pelo resultado.
+
+---
+
+### Passo 1 — leia os estereótipos e modificadores
+
+Antes de qualquer coisa, o UML já te dá pistas visuais explícitas. Olha o que está escrito:
+
+```
+WeatherProvider  <<Singleton>>
+AircraftFactory  <<Singleton>>
+Flyable          abstract
+Aircraft         (sem marcador)
+Coordinates      (sem marcador)
+```
+
+`<<Singleton>>` significa: *existe uma e só uma instância, controlada pela própria classe*. Isso já grita: **essas classes não são entidades de domínio**. Elas têm um papel de infraestrutura/serviço.
+
+`abstract` significa: *nunca será instanciada diretamente — existe para ser herdada*. Isso grita: **ela é um contrato ou base**.
+
+---
+
+### Passo 2 — aplique as 4 perguntas em cada classe
+
+Vamos percorrer juntos:
+
+**`Coordinates`** — *O que ela representa no mundo real?*
+Uma posição geográfica com longitude, latitude e height. Só dados, sem comportamento complexo. Resposta: representa algo do domínio → `model/`
+
+**`Aircraft`, `Helicopter`, `JetPlane`, `Balloon`** — *O que elas representam?*
+Aeronaves reais. São as entidades centrais do simulador. Resposta: domínio → `model/`
+
+**`Flyable`** — *Ela define um contrato para outras?*
+Sim — toda aeronave que voa precisa implementar `updateConditions()` e `registerTower()`. Ela não representa nada do mundo real, só define *o que* qualquer coisa que voa deve saber fazer. Resposta: contrato → `flyable/`
+
+**`Tower` e `WeatherTower`** — *Ela coordena outras classes?*
+Sim — `Tower` mantém uma lista de `Flyable` e os notifica quando algo muda. Ela não é uma entidade do domínio (você não pousa num `Tower`), ela *orquestra* o comportamento. Resposta: coordenação → `tower/`
+
+**`WeatherProvider`** — *Ela coordena ou serve dados?*
+Ela é um `<<Singleton>>` que fornece dados de clima. Não é entidade, não é contrato, não cria objetos — ela *provê informação*. Resposta: serviço/provider → `provider/`
+
+**`AircraftFactory`** — *Ela cria outras classes?*
+Sim — o próprio nome diz. `newAircraft()` recebe um tipo como string e devolve um `Flyable`. Ela existe exclusivamente para instanciar objetos. Resposta: criação → `factory/`
+
+---
+
+### Passo 3 — visualize o resultado do raciocínio
+
+<img src="dcs/uml_to_folders_mapping.svg" width=680>
+
+---
+
+## O processo mental resumido em 3 etapas
+
+Toda vez que você olhar um UML, percorra nesta ordem:
+
+**1. Procure os estereótipos** — `<<Singleton>>`, `<<abstract>>`, `<<interface>>`. Eles revelam o *papel* antes de você ler qualquer método.
+
+**2. Agrupe por coesão** — classes que *mudam juntas* ou que *falam entre si* o tempo todo pertencem à mesma pasta. `Tower` e `WeatherTower` se relacionam diretamente; `Helicopter` e `Balloon` compartilham a mesma base. Esse é o sinal.
+
+**3. Nomeie pelo papel, não pelo tipo** — a pasta não se chama `abstracts/` ou `classes/`. Ela se chama pelo papel que aquele grupo exerce no sistema: `tower/` porque coordena, `factory/` porque cria, `model/` porque representa.
+
+---
+

@@ -1,8 +1,9 @@
 package com.faaraujo.avaj.simulator.aircraft;
 
+import com.faaraujo.avaj.simulator.Aircraft;
 import com.faaraujo.avaj.simulator.Coordinates;
 
-public class Helicopter {
+public class Helicopter extends Aircraft {
 
   public Helicopter() {
 
@@ -12,7 +13,10 @@ public class Helicopter {
 
   }
 
+  @Override
   public void updateConditions() {
+    // comportamento ESPECÍFICO do Helicopter
+    // ex: sobe/desce/para baseado no weather
   }
 
 }
