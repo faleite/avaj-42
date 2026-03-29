@@ -1,7 +1,4 @@
-package com.faaraujo.avaj.simulator.aircraft;
-
-import com.faaraujo.avaj.simulator.Aircraft;
-import com.faaraujo.avaj.simulator.Coordinates;
+package com.faaraujo.avaj.simulator.model;
 
 public class Baloon extends Aircraft {
 

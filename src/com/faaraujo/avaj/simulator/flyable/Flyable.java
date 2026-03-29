@@ -1,4 +1,6 @@
-package com.faaraujo.avaj.simulator;
+package com.faaraujo.avaj.simulator.flyable;
+
+import com.faaraujo.avaj.simulator.tower.WeatherTower;
 
 public abstract class Flyable {
 

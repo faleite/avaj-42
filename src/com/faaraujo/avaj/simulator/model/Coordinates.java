@@ -1,4 +1,4 @@
-package com.faaraujo.avaj.simulator;
+package com.faaraujo.avaj.simulator.model;
 
 public class Coordinates {
 

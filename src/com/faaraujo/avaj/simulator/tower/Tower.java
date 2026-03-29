@@ -1,5 +1,6 @@
-package com.faaraujo.avaj.simulator;
+package com.faaraujo.avaj.simulator.tower;
 
+import com.faaraujo.avaj.simulator.flyable.Flyable;
 import java.util.List;
 
 public class Tower {

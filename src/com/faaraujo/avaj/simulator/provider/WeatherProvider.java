@@ -1,4 +1,6 @@
-package com.faaraujo.avaj.simulator;
+package com.faaraujo.avaj.simulator.provider;
+
+import com.faaraujo.avaj.simulator.model.Coordinates;
 
 public class WeatherProvider {
 

@@ -1,6 +1,6 @@
-package com.faaraujo.avaj.simulator;
+package com.faaraujo.avaj.simulator.model;
 
-import com.faaraujo.avaj.simulator.Flyable;
+import com.faaraujo.avaj.simulator.flyable.Flyable;
 
 public class Aircraft extends Flyable {
 
@@ -19,5 +19,9 @@ public class Aircraft extends Flyable {
     this.id = id;
     this.name = name;
     this.coordinates = coordinates;
+  }
+
+  @Override
+  public void updateConditions() {
   }
 }
