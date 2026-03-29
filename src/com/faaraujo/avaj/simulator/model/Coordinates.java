@@ -2,17 +2,13 @@ package com.faaraujo.avaj.simulator.model;
 
 public class Coordinates {
 
-  private Integer longitude;
-  private Integer latitude;
-  private Integer height;
+  private int longitude;
+  private int latitude;
+  private int height;
 
-  public Coordinates() {
-
-  }
-
-  public Coordinates(
-      Integer longitude, Integer latitude,
-      Integer height) {
+  Coordinates(
+      int longitude, int latitude,
+      int height) {
 
     this.longitude = longitude;
     this.latitude = latitude;
@@ -20,27 +16,25 @@ public class Coordinates {
 
   }
 
-  public Integer getLongitude() {
+  public int getLongitude() {
     return this.longitude;
   }
 
-  public void setLongitude(Integer longitude) {
-    this.longitude = longitude;
-  }
-
-  public Integer getLatitude() {
+  public int getLatitude() {
     return this.latitude;
   }
 
-  public void setLatitude(Integer latitude) {
-    this.latitude = latitude;
-  }
-
-  public Integer getHeight() {
+  public int getHeight() {
     return this.height;
   }
 
-  public void setHeight(Integer height) {
-    this.height = height;
+  Coordinates add(int longitude, int latitude, int height) {
+
+    return new Coordinates(
+      this.longitude + longitude,
+      this.latitude + latitude,
+      Math.min(100, Math.max(0, this.height + height))
+    );
   }
+
 }

@@ -35,7 +35,14 @@ Métodos | <--
 - (-) private
 - (+) public
 - (#) protected
-- (~) package/default
+- (~) package/default (quando você não escreve nada)
+
+Modificador | Própria Classe | Mesmo Pacote | Subclasse (Herança) | Mundo (Outros pacotes)
+--|--|--|--|--|
+public | Sim | Sim | Sim | Sim
+protected | Sim | Sim | Sim | Não
+default (~) | Sim | Sim | Não | Não
+private | Sim | Não | Não | Não
 
 ###  Configuração visual do PlantUML
 
