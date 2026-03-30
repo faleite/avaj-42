@@ -2,18 +2,52 @@ package com.faaraujo.avaj.simulator.model;
 
 public class Helicopter extends Aircraft {
 
-  public Helicopter() {
-
-  }
-
-  public Helicopter(Long id, String name, Coordinates coordinates) {
-
+  public Helicopter(long id, String name, Coordinates coordinates) {
+    super(id, name, coordinates);
   }
 
   @Override
   public void updateConditions() {
-    // comportamento ESPECÍFICO do Helicopter
-    // ex: sobe/desce/para baseado no weather
-  }
+    String weather = weatherTower.getWeather(this.coordinates);
 
+    switch (weather) {
+      case "SUN":
+        this.coordinates = coordinates.add(10, 0, 2);
+
+        // TODO: repelace with logger
+        System.out.println("Helicopter#" + this.name + "(" + this.id + "):" +
+            " SPECIFIC_MESSAGE");
+        break;
+
+      case "RAIN":
+        this.coordinates = coordinates.add(5, 0, 0);
+
+        // TODO: repelace with logger
+        System.out.println("Helicopter#" + this.name + "(" + this.id + "):" +
+            " SPECIFIC_MESSAGE");
+        break;
+
+      case "FOG":
+        this.coordinates = coordinates.add(1, 0, 0);
+
+        // TODO: repelace with logger
+        System.out.println("Helicopter#" + this.name + "(" + this.id + "):" +
+            " SPECIFIC_MESSAGE");
+        break;
+
+      case "SNOW":
+        this.coordinates = coordinates.add(0, 0, -12);
+
+        // TODO: repelace with logger
+        System.out.println("Helicopter#" + this.name + "(" + this.id + "):" +
+            " SPECIFIC_MESSAGE");
+    }
+
+    if (this.coordinates.getHeight() == 0) {
+      // TODO: repelace with logger
+      System.out.println("Helicopter#" + this.name + "(" + this.id + "): landing.");
+
+      this.weatherTower.unregister(this);
+    }
+  }
 }
