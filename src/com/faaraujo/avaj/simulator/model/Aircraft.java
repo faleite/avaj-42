@@ -15,4 +15,13 @@ public abstract class Aircraft extends Flyable {
     this.coordinates = coordinates;
   }
 
+  @Override
+  public String toString() {
+
+    String message = this.getClass().getSimpleName();
+    message += "#" + name + "(" + id + ")";
+
+    return message;
+  }
+
 }
