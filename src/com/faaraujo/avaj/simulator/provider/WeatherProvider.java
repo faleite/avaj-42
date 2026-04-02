@@ -4,25 +4,27 @@ import com.faaraujo.avaj.simulator.model.Coordinates;
 
 public class WeatherProvider {
 
-  private String[] weather;
+  private String[] weather = { "RAIN", "FOG", "SUN", "SNOW" };
+
+  private static WeatherProvider instance;
 
   private WeatherProvider() {
 
   }
 
-  private WeatherProvider(String[] weather) {
-    this.weather = weather;
+  public static WeatherProvider getInstance() {
+    if (instance == null) {
+      instance = new WeatherProvider();
+    }
+    return instance;
   }
 
   public String getCurrentWeather(Coordinates coordinates) {
-    return null;
+    int index = Math.abs(coordinates.getLongitude() +
+        coordinates.getLatitude() +
+        coordinates.getHeight()) % weather.length;
+
+    return weather[index];
   }
 
-  public String[] getWeather() {
-    return this.weather;
-  }
-
-  public void setWeather(String[] weather) {
-    this.weather = weather;
-  }
 }
