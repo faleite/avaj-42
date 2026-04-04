@@ -20,7 +20,7 @@ public class Balloon extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " Perfect day to do absolutely nothing but float.");
         break;
 
       case "RAIN":
@@ -28,7 +28,7 @@ public class Balloon extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " I'm basically a giant, colorful, leaking umbrella now.");
         break;
 
       case "FOG":
@@ -36,7 +36,7 @@ public class Balloon extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " I can't see the ground, but at least the birds can't see me.");
         break;
 
       case "SNOW":
@@ -44,12 +44,12 @@ public class Balloon extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " Help, I'm becoming a giant frozen blueberry!");
     }
 
     if (this.coordinates.getHeight() == 0) {
       // TODO: repelace with logger
-      Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "): landing.");
+      Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "): Hold on tight, we're landing.");
 
       this.weatherTower.unregister(this);
     }

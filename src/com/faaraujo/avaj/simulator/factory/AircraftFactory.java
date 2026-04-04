@@ -15,18 +15,15 @@ public class AircraftFactory {
     Flyable flyable = null;
 
     switch (type) {
-      case "JetPlane":
-        flyable = new JetPlane(idGenerate++, name, coordinates);
+      case "jetplane":
+        flyable = new JetPlane(++idGenerate, name, coordinates);
         break;
-      case "Helicopter":
-        flyable = new Helicopter(idGenerate++, name, coordinates);
+      case "helicopter":
+        flyable = new Helicopter(++idGenerate, name, coordinates);
         break;
-      case "Balloon":
-        flyable = new Balloon(idGenerate++, name, coordinates);
+      case "balloon":
+        flyable = new Balloon(++idGenerate, name, coordinates);
         break;
-      default:
-        // TODO: create log message
-        System.out.println("We dont know this type of Aircraft man. Sorry!");
     }
 
     if (flyable == null) {

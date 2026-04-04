@@ -44,7 +44,7 @@ public class Parser {
     }
 
     try {
-      String type = fields[0];
+      String type = fields[0].toLowerCase();
       String name = fields[1];
       int longitude = Integer.parseInt(fields[2]);
       int latitude = Integer.parseInt(fields[3]);

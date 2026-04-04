@@ -358,3 +358,31 @@ find . -name "*.java" > sources.txt
 java -cp out com.faaraujo.avaj.simulator.Simulator
 java com.faaraujo.avaj.simulator.Simulator
 ```
+
+## Messages about weather
+### 🎈 Balloon
+SUN: "Perfect day to do absolutely nothing but float."
+
+RAIN: "I’m basically a giant, colorful, leaking umbrella now."
+
+FOG: "I can't see the ground, but at least the birds can't see me."
+
+SNOW: "Help, I’m becoming a giant frozen blueberry!"
+
+### ✈️ JetPlane
+SUN: "Clear skies! Time to break the sound barrier and some windows."
+
+RAIN: "Wipers on max, but I’m still faster than the clouds."
+
+FOG: "Flying blind, but hey, that's what the expensive buttons are for."
+
+SNOW: "Engines are hot, but my wings are turning into popsicles."
+
+### 🚁 Helicopter
+SUN: "Spinning fast enough to chop the sunlight into pieces."
+
+RAIN: "It's like flying inside a giant, noisy washing machine."
+
+FOG: "Static everywhere; I hope that tree isn't where I think it is."
+
+SNOW: "Note to self: Being a giant ceiling fan in a blizzard is a bad idea."

@@ -21,12 +21,14 @@ public class Simulator {
     try {
       Logger.getInstance().init("simulation.txt");
     } catch (IOException e) {
-      // TODO: handle exception
-      e.printStackTrace();
+      System.err.println("Something went wrong, look: " + e.getMessage());
+      System.exit(1);
     }
 
     try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-
+      //
+      // TODO: Igonorar Linhas vazias!!!
+      //
       int simulations = Parser.getInstance().getNumberOfSimulations(reader.readLine());
       WeatherTower weatherTower = new WeatherTower();
 
@@ -41,8 +43,10 @@ public class Simulator {
       }
     } catch (IOException e) {
       System.err.println("File error: " + e.getMessage());
+      System.exit(1);
     } catch (IllegalArgumentException e) {
       System.err.println("Parser error: " + e.getMessage());
+      System.exit(1);
     }
   }
 }

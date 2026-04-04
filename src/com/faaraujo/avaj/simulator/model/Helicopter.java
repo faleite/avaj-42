@@ -18,7 +18,7 @@ public class Helicopter extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("Helicopter#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " Spinning fast enough to chop the sunlight into pieces.");
         break;
 
       case "RAIN":
@@ -26,7 +26,7 @@ public class Helicopter extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("Helicopter#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " It's like flying inside a giant, noisy washing machine.");
         break;
 
       case "FOG":
@@ -34,7 +34,7 @@ public class Helicopter extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("Helicopter#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " Static everywhere; I hope that tree isn't where I think it is.");
         break;
 
       case "SNOW":
@@ -42,12 +42,12 @@ public class Helicopter extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("Helicopter#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " Note to self: Being a giant ceiling fan in a blizzard is a bad idea.");
     }
 
     if (this.coordinates.getHeight() == 0) {
       // TODO: repelace with logger
-      Logger.getInstance().log("Helicopter#" + this.name + "(" + this.id + "): landing.");
+      Logger.getInstance().log("Helicopter#" + this.name + "(" + this.id + "): Hold on tight, we're landing.");
 
       this.weatherTower.unregister(this);
     }

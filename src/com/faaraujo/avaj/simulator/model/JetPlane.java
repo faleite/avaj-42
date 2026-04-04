@@ -18,7 +18,7 @@ public class JetPlane extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " Clear skies! Time to break the sound barrier and some windows.");
         break;
 
       case "RAIN":
@@ -26,7 +26,7 @@ public class JetPlane extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " Wipers on max, but I'm still faster than the clouds.");
         break;
 
       case "FOG":
@@ -34,7 +34,7 @@ public class JetPlane extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " Flying blind, but hey, that's what the expensive buttons are for.");
         break;
 
       case "SNOW":
@@ -42,12 +42,12 @@ public class JetPlane extends Aircraft {
 
         // TODO: repelace with logger
         Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "):" +
-            " SPECIFIC_MESSAGE");
+            " Engines are hot, but my wings are turning into popsicles.");
     }
 
     if (this.coordinates.getHeight() == 0) {
       // TODO: repelace with logger
-      Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "): landing.");
+      Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "): Hold on tight, we're landing.");
 
       this.weatherTower.unregister(this);
     }
