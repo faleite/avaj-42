@@ -268,3 +268,93 @@ Toda vez que você olhar um UML, percorra nesta ordem:
 
 ---
 
+## 🌤️ Algoritmos de Weather Generation
+
+O único requisito do subject é: **deve levar as coordenadas em conta**. Aqui estão algumas ideias com complexidade crescente:
+
+---
+
+### Opção A — Soma simples (sua implementação atual)
+```java
+int index = Math.abs(lon + lat + height) % 4;
+```
+✅ Simples e válido. Problema: coordenadas próximas tendem a ter o mesmo clima.
+
+---
+
+### Opção B — Multiplicação com pesos
+```java
+int index = Math.abs(lon * 31 + lat * 17 + height * 7) % 4;
+```
+Distribui melhor — coordenadas próximas geram climas diferentes. Os números primos como multiplicadores são um truque clássico de hash.
+
+---
+
+### Opção C — Baseado em `hashCode()`
+```java
+int index = Math.abs(
+    (coordinates.getLongitude() * 73856093) ^
+    (coordinates.getLatitude()  * 19349663) ^
+    (coordinates.getHeight()    * 83492791)
+) % 4;
+```
+Inspirado em spatial hashing — técnica usada em jogos para mapear coordenadas 3D a um índice. Os números grandes são primos escolhidos para minimizar colisões.
+
+---
+
+### Opção D — Usando `java.util.Random` com seed
+```java
+public String getCurrentWeather(Coordinates coordinates) {
+    long seed = coordinates.getLongitude() * 1000L
+              + coordinates.getLatitude() * 100L
+              + coordinates.getHeight();
+    Random random = new Random(seed);
+    return weather[random.nextInt(weather.length)];
+}
+```
+A mesma coordenada **sempre** gera o mesmo clima (determinístico), mas coordenadas diferentes geram resultados bem distribuídos. `Random` com seed fixa é reproduzível.
+
+---
+
+### Opção E — Zonas climáticas por altitude
+```java
+public String getCurrentWeather(Coordinates coordinates) {
+    if (coordinates.getHeight() > 75) return "SNOW";
+    if (coordinates.getHeight() > 50) return "FOG";
+
+    int index = Math.abs(coordinates.getLongitude() * 31
+                       + coordinates.getLatitude()  * 17) % 2;
+    return index == 0 ? "SUN" : "RAIN";
+}
+```
+Tem lógica de domínio — altitude alta = neve/névoa, altitude baixa = sol/chuva baseado na posição horizontal. Simula zonas climáticas reais.
+
+---
+
+## 💡 Qual escolher?
+
+| Opção | Distribuição | Complexidade | Realismo |
+|---|---|---|---|
+| A | ⭐ | ⭐ | ⭐ |
+| B | ⭐⭐⭐ | ⭐⭐ | ⭐⭐ |
+| C | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| D | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
+| E | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ |
+
+Para o projeto, **Opção D** é a mais elegante — usa a API padrão do Java, é determinística e bem distribuída. **Opção E** impressiona avaliadores por ter lógica de domínio.
+
+Pode até combinar D e E — usar zonas de altitude e dentro de cada zona usar `Random` com seed. Fica a seu critério!
+
+Qual você prefere? Ou seguimos para `AircraftFactory`? 🚀
+
+## Comandos Uteis
+```bash
+find . -name "*.class"
+find . -name "*.class" -type f -delete
+javac -d out @sources.txt
+javac @sources.txt
+find * -name "*.java" > sources.txt
+find . -name "*.java" > sources.txt
+java -cp out com.faaraujo.avaj.simulator.Simulator
+java com.faaraujo.avaj.simulator.Simulator
+```

@@ -28,13 +28,12 @@ public class Coordinates {
     return this.height;
   }
 
-  Coordinates add(int longitude, int latitude, int height) {
+  public Coordinates add(int longitude, int latitude, int height) {
 
     return new Coordinates(
-      this.longitude + longitude,
-      this.latitude + latitude,
-      Math.min(100, Math.max(0, this.height + height))
-    );
+        this.longitude + longitude,
+        this.latitude + latitude,
+        Math.min(100, Math.max(0, this.height + height)));
   }
 
 }

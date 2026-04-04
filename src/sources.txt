@@ -1,0 +1,12 @@
+com/faaraujo/avaj/simulator/tower/WeatherTower.java
+com/faaraujo/avaj/simulator/tower/Tower.java
+com/faaraujo/avaj/simulator/Logger.java
+com/faaraujo/avaj/simulator/provider/WeatherProvider.java
+com/faaraujo/avaj/simulator/Simulator.java
+com/faaraujo/avaj/simulator/model/Balloon.java
+com/faaraujo/avaj/simulator/model/Aircraft.java
+com/faaraujo/avaj/simulator/model/JetPlane.java
+com/faaraujo/avaj/simulator/model/Coordinates.java
+com/faaraujo/avaj/simulator/model/Flyable.java
+com/faaraujo/avaj/simulator/model/Helicopter.java
+com/faaraujo/avaj/simulator/factory/AircraftFactory.java

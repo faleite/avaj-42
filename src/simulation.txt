@@ -1,0 +1,142 @@
+Tower says: Balloon#B1(0) registered to weather tower.
+Tower says: Balloon#B2(1) registered to weather tower.
+Tower says: JetPlane#J1(2) registered to weather tower.
+Tower says: Helicopter#H1(3) registered to weather tower.
+Tower says: Helicopter#H2(4) registered to weather tower.
+Tower says: Helicopter#H3(5) registered to weather tower.
+Tower says: Balloon#B3(6) registered to weather tower.
+Tower says: JetPlane#J2(7) registered to weather tower.
+Tower says: Helicopter#H4(8) registered to weather tower.
+Balloon#B1(0): SPECIFIC_MESSAGE
+Balloon#B2(1): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H1(3): SPECIFIC_MESSAGE
+Helicopter#H2(4): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+Balloon#B3(6): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+Balloon#B1(0): SPECIFIC_MESSAGE
+Balloon#B2(1): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H1(3): SPECIFIC_MESSAGE
+Helicopter#H1(3): landing.
+Tower says: Helicopter#H1(3) unregistered from weather tower.
+Helicopter#H2(4): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+Balloon#B3(6): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+Balloon#B1(0): SPECIFIC_MESSAGE
+Balloon#B2(1): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H2(4): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+Balloon#B3(6): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+Balloon#B1(0): SPECIFIC_MESSAGE
+Balloon#B2(1): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H2(4): SPECIFIC_MESSAGE
+Helicopter#H2(4): landing.
+Tower says: Helicopter#H2(4) unregistered from weather tower.
+Helicopter#H3(5): SPECIFIC_MESSAGE
+Balloon#B3(6): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+Balloon#B1(0): SPECIFIC_MESSAGE
+Balloon#B1(0): landing.
+Tower says: Balloon#B1(0) unregistered from weather tower.
+Balloon#B2(1): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+Balloon#B3(6): SPECIFIC_MESSAGE
+Balloon#B3(6): landing.
+Tower says: Balloon#B3(6) unregistered from weather tower.
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+Balloon#B2(1): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+Balloon#B2(1): SPECIFIC_MESSAGE
+Balloon#B2(1): landing.
+Tower says: Balloon#B2(1) unregistered from weather tower.
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE
+JetPlane#J1(2): SPECIFIC_MESSAGE
+Helicopter#H3(5): SPECIFIC_MESSAGE
+JetPlane#J2(7): SPECIFIC_MESSAGE
+Helicopter#H4(8): SPECIFIC_MESSAGE

@@ -1,5 +1,7 @@
 package com.faaraujo.avaj.simulator.model;
 
+import com.faaraujo.avaj.simulator.Logger;
+
 public class JetPlane extends Aircraft {
 
   public JetPlane(long id, String name, Coordinates coordinates) {
@@ -15,7 +17,7 @@ public class JetPlane extends Aircraft {
         this.coordinates = coordinates.add(0, 10, 2);
 
         // TODO: repelace with logger
-        System.out.println("JetPlane#" + this.name + "(" + this.id + "):" +
+        Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "):" +
             " SPECIFIC_MESSAGE");
         break;
 
@@ -23,7 +25,7 @@ public class JetPlane extends Aircraft {
         this.coordinates = coordinates.add(0, 5, 0);
 
         // TODO: repelace with logger
-        System.out.println("JetPlane#" + this.name + "(" + this.id + "):" +
+        Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "):" +
             " SPECIFIC_MESSAGE");
         break;
 
@@ -31,7 +33,7 @@ public class JetPlane extends Aircraft {
         this.coordinates = coordinates.add(0, 1, 0);
 
         // TODO: repelace with logger
-        System.out.println("JetPlane#" + this.name + "(" + this.id + "):" +
+        Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "):" +
             " SPECIFIC_MESSAGE");
         break;
 
@@ -39,13 +41,13 @@ public class JetPlane extends Aircraft {
         this.coordinates = coordinates.add(0, 0, -7);
 
         // TODO: repelace with logger
-        System.out.println("JetPlane#" + this.name + "(" + this.id + "):" +
+        Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "):" +
             " SPECIFIC_MESSAGE");
     }
 
     if (this.coordinates.getHeight() == 0) {
       // TODO: repelace with logger
-      System.out.println("JetPlane#" + this.name + "(" + this.id + "): landing.");
+      Logger.getInstance().log("JetPlane#" + this.name + "(" + this.id + "): landing.");
 
       this.weatherTower.unregister(this);
     }
