@@ -28,7 +28,11 @@ public class Coordinates {
     return this.height;
   }
 
-  public Coordinates add(int longitude, int latitude, int height) {
+  public static Coordinates of(int longitude, int latitude, int height) {
+    return new Coordinates(longitude, latitude, height);
+  }
+
+  Coordinates add(int longitude, int latitude, int height) {
 
     return new Coordinates(
         this.longitude + longitude,

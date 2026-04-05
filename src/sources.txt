@@ -1,6 +1,7 @@
+com/faaraujo/avaj/simulator/util/Parser.java
+com/faaraujo/avaj/simulator/util/Logger.java
 com/faaraujo/avaj/simulator/tower/WeatherTower.java
 com/faaraujo/avaj/simulator/tower/Tower.java
-com/faaraujo/avaj/simulator/Logger.java
 com/faaraujo/avaj/simulator/provider/WeatherProvider.java
 com/faaraujo/avaj/simulator/Simulator.java
 com/faaraujo/avaj/simulator/model/Balloon.java

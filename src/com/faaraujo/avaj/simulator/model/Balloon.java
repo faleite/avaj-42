@@ -1,6 +1,6 @@
 package com.faaraujo.avaj.simulator.model;
 
-import com.faaraujo.avaj.simulator.Logger;
+import com.faaraujo.avaj.simulator.util.Logger;
 
 public class Balloon extends Aircraft {
 
@@ -10,8 +10,6 @@ public class Balloon extends Aircraft {
 
   @Override
   public void updateConditions() {
-    // comportamento ESPECÍFICO do Baloon
-    // ex: sobe/desce/para baseado no weather
     String weather = weatherTower.getWeather(this.coordinates);
 
     switch (weather) {

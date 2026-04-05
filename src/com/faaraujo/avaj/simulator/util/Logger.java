@@ -1,4 +1,4 @@
-package com.faaraujo.avaj.simulator;
+package com.faaraujo.avaj.simulator.util;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -30,7 +30,6 @@ public class Logger {
       writer.flush();
 
     } catch (IOException e) {
-      // TODO: handle exception
       System.err.println("Error: " + e.getMessage());
     }
   }

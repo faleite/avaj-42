@@ -5,7 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import com.faaraujo.avaj.simulator.model.Flyable;
-import com.faaraujo.avaj.simulator.model.Parser;
+import com.faaraujo.avaj.simulator.util.Parser;
+import com.faaraujo.avaj.simulator.util.Logger;
 import com.faaraujo.avaj.simulator.tower.WeatherTower;
 
 public class Simulator {

@@ -386,3 +386,243 @@ RAIN: "It's like flying inside a giant, noisy washing machine."
 FOG: "Static everywhere; I hope that tree isn't where I think it is."
 
 SNOW: "Note to self: Being a giant ceiling fan in a blizzard is a bad idea."
+
+## Refaturing Simulator.java
+Excelente pergunta! 🎯 **SIM, definitivamente você deveria fazer isso!** Vou explicar por quê e como:
+
+---
+
+## **Por Que Refatorar? (Princípios Violados)**
+
+### **Problema Atual: Main() com Muitas Responsabilidades**
+
+```java
+public static void main(String[] args) {
+  // 1. Validação de argumentos ❌
+  if (args.length != 1) { ... }
+  
+  // 2. Inicialização de Logger ❌
+  Logger.getInstance().init("simulation.txt");
+  
+  // 3. Leitura de arquivo ❌
+  BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+  
+  // 4. Orquestração da simulação ❌
+  weatherTower.changeWeather();
+}
+```
+
+**Violações:**
+- ✗ **Single Responsibility Principle** (SRP): main() faz 4 coisas
+- ✗ **Separation of Concerns**: I/O misturado com lógica
+- ✗ **Testabilidade**: Impossível testar sem mockar System.exit()
+- ✗ **Limpeza**: Código muito "barulhento" e verboso
+
+---
+
+## **Solução: Criar uma Classe `SimulationRunner`**
+
+### **Estrutura Proposta**
+
+```
+src/com/faaraujo/avaj/simulator/
+├── Simulator.java           ← LIMPO! Apenas main()
+├── runner/
+│   └── SimulationRunner.java ← NOVA! Toda a lógica
+└── util/
+    ├── Parser.java
+    └── Logger.java
+```
+
+---
+
+## **Implementação Recomendada**
+
+### **Passo 1: Criar `SimulationRunner.java`**
+
+```java
+package com.faaraujo.avaj.simulator.runner;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import com.faaraujo.avaj.simulator.model.Flyable;
+import com.faaraujo.avaj.simulator.util.Parser;
+import com.faaraujo.avaj.simulator.util.Logger;
+import com.faaraujo.avaj.simulator.tower.WeatherTower;
+
+public class SimulationRunner {
+
+  public static void run(String[] args) throws IOException, IllegalArgumentException {
+    validateArguments(args);
+    initializeLogger();
+    executeSimulation(args[0]);
+  }
+
+  private static void validateArguments(String[] args) throws IllegalArgumentException {
+    if (args.length != 1) {
+      throw new IllegalArgumentException(
+          "Error: Expected 1 argument, but received " + args.length + ".\n" +
+          "Usage: java <classpath> com.faaraujo.avaj.simulator.Simulator <scenario_file>"
+      );
+    }
+  }
+
+  private static void initializeLogger() throws IOException {
+    Logger.getInstance().init("simulation.txt");
+  }
+
+  private static void executeSimulation(String scenarioFile) throws IOException, IllegalArgumentException {
+    try (BufferedReader reader = new BufferedReader(new FileReader(scenarioFile))) {
+      int simulations = readSimulationCount(reader);
+      WeatherTower weatherTower = new WeatherTower();
+      
+      readAircraft(reader, weatherTower);
+      runSimulation(weatherTower, simulations);
+    }
+  }
+
+  private static int readSimulationCount(BufferedReader reader) throws IOException, IllegalArgumentException {
+    String line;
+    while ((line = reader.readLine()) != null) {
+      if (!line.trim().isEmpty()) {
+        return Parser.getInstance().getNumberOfSimulations(line);
+      }
+    }
+    throw new IllegalArgumentException("No simulation count found in file");
+  }
+
+  private static void readAircraft(BufferedReader reader, WeatherTower weatherTower) 
+      throws IOException, IllegalArgumentException {
+    String line;
+    while ((line = reader.readLine()) != null) {
+      if (!line.trim().isEmpty()) {
+        Flyable aircraft = Parser.getInstance().parseAircraft(line);
+        aircraft.registerTower(weatherTower);
+      }
+    }
+  }
+
+  private static void runSimulation(WeatherTower weatherTower, int simulations) {
+    for (int i = 0; i < simulations; i++) {
+      weatherTower.changeWeather();
+    }
+  }
+}
+```
+
+### **Passo 2: Limpar `Simulator.java`**
+
+```java
+package com.faaraujo.avaj.simulator;
+
+import com.faaraujo.avaj.simulator.runner.SimulationRunner;
+
+public class Simulator {
+
+  public static void main(String[] args) {
+    try {
+      SimulationRunner.run(args);
+    } catch (IllegalArgumentException e) {
+      System.err.println(e.getMessage());
+      System.exit(1);
+    } catch (IOException e) {
+      System.err.println("File error: " + e.getMessage());
+      System.exit(1);
+    }
+  }
+}
+```
+
+---
+
+## **Comparativo: Antes vs Depois**
+
+### **Antes (64 linhas, confuso)**
+```java
+public static void main(String[] args) {
+  if (args.length != 1) { System.err.println(...); System.exit(1); }
+  try { Logger.getInstance().init("simulation.txt"); }
+  catch (IOException e) { ... System.exit(1); }
+  try (BufferedReader reader = ...) {
+    while ((line = reader.readLine()) != null) {
+      if (!line.trim().isEmpty()) { ... }
+    }
+    while ((line = reader.readLine()) != null) {
+      if (!line.trim().isEmpty()) { ... }
+    }
+    for (int i = 0; i < simulations; i++) { ... }
+  } catch (IOException e) { ... } catch (IllegalArgumentException e) { ... }
+}
+```
+
+### **Depois (Limpo e legível)**
+```java
+public static void main(String[] args) {
+  try {
+    SimulationRunner.run(args);
+  } catch (IllegalArgumentException e) {
+    System.err.println(e.getMessage());
+    System.exit(1);
+  } catch (IOException e) {
+    System.err.println("File error: " + e.getMessage());
+    System.exit(1);
+  }
+}
+```
+
+---
+
+## **Benefícios da Refatoração**
+
+| Aspecto | Antes | Depois |
+|--------|-------|--------|
+| **Linhas em main()** | 49 | 13 |
+| **SRP** | Violado | ✅ Respeitado |
+| **Testabilidade** | Difícil | ✅ Fácil testar métodos |
+| **Leitura** | Confusa | ✅ Clara e linear |
+| **Reutilização** | Impossível | ✅ Pode chamar `SimulationRunner.run()` |
+| **Responsabilidade** | main() faz tudo | Simulator=entry point, Runner=lógica |
+
+---
+
+## **Padrão: O Que Fazer**
+
+```
+Simulator.java (entry point)
+    ↓ chama
+SimulationRunner.java (orquestrador)
+    ↓ usa
+Parser (conversão)
+Logger (persistência)
+WeatherTower (simulação)
+```
+
+---
+
+## **Tipo de Classe: O Que é SimulationRunner?**
+
+| Padrão | Nome | Descrição |
+|--------|------|-----------|
+| **Facade** | SimulationRunner | Simplifica complexidade |
+| **Orchestrator** | SimulationRunner | Coordena múltiplos serviços |
+| **Application Service** | SimulationRunner | Use case/workflow |
+| **Runner** | SimulationRunner | Executa processo completo |
+
+Neste caso, é um **Application Service** (camada de aplicação).
+
+---
+
+## 🎯 **Minha Recomendação**
+
+**Crie `SimulationRunner` em novo pacote `runner/`** porque:
+
+1. ✅ Limpa Simulator.java para apenas entry point
+2. ✅ Segue SRP (cada classe uma responsabilidade)
+3. ✅ Reutilizável (pode chamar de outros contextos)
+4. ✅ Testável (métodos privados são testáveis indiretamente)
+5. ✅ Padrão Clean Architecture
+6. ✅ Fácil manutenção
+
+Quer que eu faça essa refatoração no seu projeto?

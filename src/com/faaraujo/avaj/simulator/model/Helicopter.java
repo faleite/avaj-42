@@ -1,6 +1,6 @@
 package com.faaraujo.avaj.simulator.model;
 
-import com.faaraujo.avaj.simulator.Logger;
+import com.faaraujo.avaj.simulator.util.Logger;
 
 public class Helicopter extends Aircraft {
 

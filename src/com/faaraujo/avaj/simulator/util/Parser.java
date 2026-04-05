@@ -1,8 +1,10 @@
-package com.faaraujo.avaj.simulator.model;
+package com.faaraujo.avaj.simulator.util;
 
 import java.io.IOException;
 
 import com.faaraujo.avaj.simulator.factory.AircraftFactory;
+import com.faaraujo.avaj.simulator.model.Flyable;
+import com.faaraujo.avaj.simulator.model.Coordinates;
 
 public class Parser {
 
@@ -28,12 +30,6 @@ public class Parser {
     return simulations;
   }
 
-  /*
-   * Type Name Long lat hei
-   * Balloon B2 1 8 66
-   * JetPlane J1 23 44 32
-   * Helicopter H1 654 33 20
-   **/
   public Flyable parseAircraft(String lines) throws IllegalArgumentException {
 
     String[] fields = lines.split(" ");
@@ -50,11 +46,10 @@ public class Parser {
       int latitude = Integer.parseInt(fields[3]);
       int height = Integer.parseInt(fields[4]);
 
-      Coordinates coordinates = new Coordinates(longitude, latitude, height);
+      Coordinates coordinates = Coordinates.of(longitude, latitude, height);
       return AircraftFactory.getInstance().newAircraft(type, name, coordinates);
 
     } catch (NumberFormatException e) {
-      // TODO: handle exception
       throw new IllegalArgumentException("Invalid coordinates: must be integers", e);
     }
   }
