@@ -26,27 +26,37 @@ public class Simulator {
     }
 
     try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-      //
-      // TODO: Igonorar Linhas vazias!!!
-      //
-      int simulations = Parser.getInstance().getNumberOfSimulations(reader.readLine());
+      String line;
+      int simulations = 0;
+
+      while ((line = reader.readLine()) != null) {
+        if (!line.trim().isEmpty()) {
+          simulations = Parser.getInstance().getNumberOfSimulations(line);
+          break;
+        }
+      }
+
       WeatherTower weatherTower = new WeatherTower();
 
-      String line;
       while ((line = reader.readLine()) != null) {
-        Flyable aircraft = Parser.getInstance().parseAircraft(line);
-        aircraft.registerTower(weatherTower);
-
+        if (!line.trim().isEmpty()) {
+          Flyable aircraft = Parser.getInstance().parseAircraft(line);
+          aircraft.registerTower(weatherTower);
+        }
       }
+
       for (int i = 0; i < simulations; i++) {
         weatherTower.changeWeather();
       }
+
     } catch (IOException e) {
       System.err.println("File error: " + e.getMessage());
       System.exit(1);
+
     } catch (IllegalArgumentException e) {
       System.err.println("Parser error: " + e.getMessage());
       System.exit(1);
+
     }
   }
 }
