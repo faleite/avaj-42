@@ -46,6 +46,10 @@ public class Parser {
       int latitude = Integer.parseInt(fields[3]);
       int height = Integer.parseInt(fields[4]);
 
+      if (longitude < 0 || latitude < 0 || height < 0 || height > 100) {
+        throw new IllegalArgumentException("Error: parameter outside the acceptable range");
+      }
+
       Coordinates coordinates = Coordinates.of(longitude, latitude, height);
       return AircraftFactory.getInstance().newAircraft(type, name, coordinates);
 

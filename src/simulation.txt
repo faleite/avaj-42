@@ -1,25 +1,11 @@
-Tower says: Balloon#Tio-San(1) registered to weather tower.
-Tower says: JetPlane#AsaBranca(2) registered to weather tower.
-Tower says: Helicopter#H1(3) registered to weather tower.
-Tower says: Helicopter#H4(4) registered to weather tower.
-Balloon#Tio-San(1): I can't see the ground, but at least the birds can't see me.
-JetPlane#AsaBranca(2): Engines are hot, but my wings are turning into popsicles.
-Helicopter#H1(3): Note to self: Being a giant ceiling fan in a blizzard is a bad idea.
-Helicopter#H4(4): It's like flying inside a giant, noisy washing machine.
-Balloon#Tio-San(1): Perfect day to do absolutely nothing but float.
-JetPlane#AsaBranca(2): Wipers on max, but I'm still faster than the clouds.
-Helicopter#H1(3): Note to self: Being a giant ceiling fan in a blizzard is a bad idea.
-Helicopter#H1(3): Hold on tight, we're landing.
-Tower says: Helicopter#H1(3) unregistered from weather tower.
-Helicopter#H4(4): Static everywhere; I hope that tree isn't where I think it is.
-Balloon#Tio-San(1): I'm basically a giant, colorful, leaking umbrella now.
-JetPlane#AsaBranca(2): Flying blind, but hey, that's what the expensive buttons are for.
-Helicopter#H4(4): Spinning fast enough to chop the sunlight into pieces.
-Balloon#Tio-San(1): Help, I'm becoming a giant frozen blueberry!
-JetPlane#AsaBranca(2): Clear skies! Time to break the sound barrier and some windows.
-Helicopter#H4(4): Spinning fast enough to chop the sunlight into pieces.
-Balloon#Tio-San(1): I'm basically a giant, colorful, leaking umbrella now.
-Balloon#Tio-San(1): Hold on tight, we're landing.
-Tower says: Balloon#Tio-San(1) unregistered from weather tower.
-JetPlane#AsaBranca(2): Clear skies! Time to break the sound barrier and some windows.
-Helicopter#H4(4): Spinning fast enough to chop the sunlight into pieces.
+Tower says: Balloon#B1(1) registered to weather tower.
+Balloon#B1(1): Perfect day to do absolutely nothing but float.
+Balloon#B1(1): I'm basically a giant, colorful, leaking umbrella now.
+Balloon#B1(1): Help, I'm becoming a giant frozen blueberry!
+Balloon#B1(1): I'm basically a giant, colorful, leaking umbrella now.
+Balloon#B1(1): Help, I'm becoming a giant frozen blueberry!
+Balloon#B1(1): I'm basically a giant, colorful, leaking umbrella now.
+Balloon#B1(1): Help, I'm becoming a giant frozen blueberry!
+Balloon#B1(1): I'm basically a giant, colorful, leaking umbrella now.
+Balloon#B1(1): Help, I'm becoming a giant frozen blueberry!
+Balloon#B1(1): I'm basically a giant, colorful, leaking umbrella now.
