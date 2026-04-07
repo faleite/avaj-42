@@ -4,6 +4,7 @@ com/faaraujo/avaj/simulator/util/Logger.java
 com/faaraujo/avaj/simulator/tower/WeatherTower.java
 com/faaraujo/avaj/simulator/tower/Tower.java
 com/faaraujo/avaj/simulator/provider/WeatherProvider.java
+com/faaraujo/avaj/simulator/exceptions/ScenarioException.java
 com/faaraujo/avaj/simulator/Simulator.java
 com/faaraujo/avaj/simulator/model/Balloon.java
 com/faaraujo/avaj/simulator/model/Aircraft.java

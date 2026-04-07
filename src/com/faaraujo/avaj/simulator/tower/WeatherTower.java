@@ -5,8 +5,8 @@ import com.faaraujo.avaj.simulator.provider.WeatherProvider;
 
 public class WeatherTower extends Tower {
 
-  public String getWeather(Coordinates coodirnates) {
-    return WeatherProvider.getInstance().getCurrentWeather(coodirnates);
+  public String getWeather(Coordinates coordinates) {
+    return WeatherProvider.getInstance().getCurrentWeather(coordinates);
   }
 
   public void changeWeather() {

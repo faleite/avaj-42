@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.faaraujo.avaj.simulator.exceptions.ScenarioException;
 import com.faaraujo.avaj.simulator.model.Flyable;
 import com.faaraujo.avaj.simulator.util.Parser;
 import com.faaraujo.avaj.simulator.util.Logger;
@@ -25,18 +26,28 @@ public class Simulation {
     this.scenarioFile = args[0];
   }
 
-  public void initLogFile() throws IOException {
-    Logger.getInstance().init("simulation.txt");
+  public void initLogFile() {
+    try {
+      Logger.getInstance().init("simulation.txt");
+    } catch (IOException e) {
+      System.err.println("Log file error: " + e.getMessage());
+      System.exit(1);
+    }
   }
 
-  public void run() throws IOException {
+  public void run() {
     initLogFile();
 
     try (BufferedReader reader = new BufferedReader(new FileReader(scenarioFile))) {
       String line;
       while ((line = reader.readLine()) != null) {
         if (!line.trim().isEmpty()) {
-          simulations = Parser.getInstance().getNumberOfSimulations(line);
+          try {
+            simulations = Parser.getInstance().getNumberOfSimulations(line);
+          } catch (ScenarioException e) {
+            System.err.println("Scenario error: " + e.getMessage());
+            System.exit(1);
+          }
           break;
         }
       }
@@ -54,8 +65,13 @@ public class Simulation {
     String line;
     while ((line = reader.readLine()) != null) {
       if (!line.trim().isEmpty()) {
-        Flyable aircraft = Parser.getInstance().parseAircraft(line);
-        aircraft.registerTower(weatherTower);
+        try {
+          Flyable aircraft = Parser.getInstance().parseAircraft(line);
+          aircraft.registerTower(weatherTower);
+        } catch (ScenarioException e) {
+          System.err.println("Scenario error: " + e.getMessage());
+          System.exit(1);
+        }
       }
     }
 

@@ -16,7 +16,6 @@ public class Balloon extends Aircraft {
       case "SUN":
         this.coordinates = coordinates.add(2, 0, 4);
 
-        // TODO: repelace with logger
         Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "):" +
             " Perfect day to do absolutely nothing but float.");
         break;
@@ -24,7 +23,6 @@ public class Balloon extends Aircraft {
       case "RAIN":
         this.coordinates = coordinates.add(0, 0, -5);
 
-        // TODO: repelace with logger
         Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "):" +
             " I'm basically a giant, colorful, leaking umbrella now.");
         break;
@@ -32,7 +30,6 @@ public class Balloon extends Aircraft {
       case "FOG":
         this.coordinates = coordinates.add(0, 0, -3);
 
-        // TODO: repelace with logger
         Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "):" +
             " I can't see the ground, but at least the birds can't see me.");
         break;
@@ -40,13 +37,11 @@ public class Balloon extends Aircraft {
       case "SNOW":
         this.coordinates = coordinates.add(0, 0, -15);
 
-        // TODO: repelace with logger
         Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "):" +
             " Help, I'm becoming a giant frozen blueberry!");
     }
 
     if (this.coordinates.getHeight() == 0) {
-      // TODO: repelace with logger
       Logger.getInstance().log("Balloon#" + this.name + "(" + this.id + "): Hold on tight, we're landing.");
 
       this.weatherTower.unregister(this);
