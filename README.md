@@ -3,7 +3,7 @@
 - [Video Tutorial](https://www.youtube.com/watch?v=6XrL5jXmTwM)
 - [uml online editor](https://plantuml.com/)
 
-## About thew project
+## About project
 implement an aircraft simulation program based on the class diagram provided to you.
 
 ## KEYWORDS
@@ -56,27 +56,28 @@ private | Sim | Não | Não | Não
 - Por padrão, o PlantUML renderiza três seções em cada classe — atributos, métodos e uma terceira opcional. 
   - Se uma dessas seções não tiver nada, ele ainda desenha o espaço vazio, deixando o diagrama com "caixas em branco" desnecessárias.
 
-
 ### Notações de relacionamento entre as classes
-- WeatherTower  *extends*  Tower          (herança de classe)
-- Tower         *agrega*   Flyable        (aggregation — List<Flyable>)
-- Aircraft      *extends*  Flyable        (realização — Flyable é abstrata)
-- Aircraft      *compõe*   Coordinates    (composition — campo direto)
-- Helicopter/JetPlane/Balloon *extends* Aircraft  (herança de classe)
-
-**`<|--` — Herança (extensão)**
-```
-Tower <|-- WeatherTower
-```
-`WeatherTower` herda de `Tower`. A seta aponta para a classe pai. É o "é um" — WeatherTower *é uma* Tower.
-
----
+Objeto A | Contrato | Objeto B | Condição |
+-- | -- | -- | -- |
+Tower         | *agrega*   | Flyable     | (aggregation — List<Flyable>)
+WeatherTower  | *extends*  | Tower       | (herança de classe)
+Aircraft      | *extends*  | Flyable     | (realização — Flyable é abstrata)
+Aircraft      | *compõe*   | Coordinates | (composition — campo direto)
+Helicopter/JetPlane/Balloon| *extends*   | Aircraft |  (herança de classe)
 
 **`-o` — Agregação**
 ```
 Tower -o Flyable
 ```
 `Tower` agrega `Flyable`. O `o` representa o losango vazio do UML. É o "tem um, mas não depende" — Tower mantém uma lista de Flyables, mas eles existem independentemente dela.
+
+---
+
+**`<|--` — Herança (extensão)**
+```
+Tower <|-- WeatherTower
+```
+`WeatherTower` herda de `Tower`. A seta aponta para a classe pai. É o "é um" — WeatherTower *é uma* Tower.
 
 ---
 
