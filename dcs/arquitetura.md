@@ -1,12 +1,11 @@
-## 🎓 Padrões e Arquitetura Aplicados no Projeto
+# Padrões de Projeto (Gang of Four)
 
----
+🎓 *Padrões e Arquitetura Aplicados no Projeto*
 
-## 1. Padrões de Projeto (Gang of Four)
-
-### 🔵 Creational Patterns — Como objetos são criados
-
-**Singleton** — *GoF, cap. 3*
+### 🔵 Creational Patterns 
+*Como objetos são criados* \
+[Video](https://youtu.be/x9h8MgAvi_I?si=mBDIdhGlsnMUIH3F)
+## Singleton — *GoF, cap. 3* 
 Usado em: `WeatherProvider`, `AircraftFactory`, `Logger`, `Parser`
 
 ```

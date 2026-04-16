@@ -14,13 +14,13 @@ Este é o capítulo mais importante do livro. Não pule.
 
 Os conceitos que você já praticou e vai reconhecer:
 
-**"Program to an interface, not an implementation"**
+**"Program to an interface, not an implementation"** *(Programar para uma interface, não uma implementação.)* \
 Você fez isso com `Flyable` — `Tower` nunca conhece `Balloon` diretamente.
 
-**"Favor object composition over class inheritance"**
+**"Favor object composition over class inheritance"**. *(Dê preferência à composição de objetos em vez da herança de classes.)* \
 Você viu isso na relação `Tower` ↔ `Flyable` — a torre *tem* uma lista de observers em vez de *ser* um observer.
 
-**"Design for change"**
+**"Design for change"** *(Projetar para a mudança)* \
 O subject pede exatamente isso — *"he knows this will not be the final version"*. Os padrões que você usou permitem adicionar novos tipos de aeronave sem modificar `Tower` ou `AircraftFactory`.
 
 ---
