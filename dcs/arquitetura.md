@@ -3,15 +3,18 @@
 🎓 *Padrões e Arquitetura Aplicados no Projeto*
 
 ### 🔵 Creational Patterns 
-*Como objetos são criados* \
-[Video](https://youtu.be/x9h8MgAvi_I?si=mBDIdhGlsnMUIH3F)
+*Como objetos são criados*
 ## Singleton — *GoF, cap. 3* 
-Usado em: `WeatherProvider`, `AircraftFactory`, `Logger`, `Parser`
+Usado em: `WeatherProvider`, `AircraftFactory`, `Logger`, `Parser`\
+[A teoria em video](https://youtu.be/x9h8MgAvi_I?si=mBDIdhGlsnMUIH3F)
 
 ```
 Intenção: garantir que uma classe tenha apenas uma instância
 e fornecer um ponto global de acesso a ela.
 ```
+
+> Muitos padrões podem ser implementados usando Singleton. Ver Abstract Factory (95),
+Builder (104) e Prototype (121).
 
 Você aplicou o padrão clássico em todos:
 ```java
@@ -20,14 +23,14 @@ private WeatherProvider() {}
 public static WeatherProvider getInstance() { ... }
 ```
 
----
-
-**Factory Method** — *GoF, cap. 3*
-Usado em: `AircraftFactory.newAircraft()`
+## Factory Method — *GoF, cap. 3*
+Usado em: `AircraftFactory.newAircraft()`\
+[A teoria em video](https://youtu.be/1rB0PhvAwiU?si=jFWmjDP8kxKOMa1K)
 
 ```
 Intenção: definir uma interface para criar objetos, mas deixar
-as subclasses decidirem qual classe instanciar.
+as subclasses decidirem qual classe instanciar. 
+O Factory Method permite adiar a instanciação para as subclasses.
 ```
 
 ```java

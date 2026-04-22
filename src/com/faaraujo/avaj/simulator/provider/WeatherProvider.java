@@ -12,6 +12,7 @@ public class WeatherProvider {
 
   }
 
+  // private ?
   public static WeatherProvider getInstance() {
     if (instance == null) {
       instance = new WeatherProvider();

@@ -28,7 +28,7 @@ O subject pede exatamente isso — *"he knows this will not be the final version
 ## Os 3 Padrões que Você Implementou
 
 ### Capítulo 3 — Singleton
-Página 127 do livro.
+Página 125 do livro.
 
 O que estudar além do que você já fez:
 
@@ -65,7 +65,7 @@ O que estudar além do que você já fez:
 
 **Factory Method vs Abstract Factory** — você implementou Factory Method. Abstract Factory é o próximo nível:
 
-```
+```java
 Factory Method:
     AircraftFactory.newAircraft("Balloon", ...)  ← um produto
 
