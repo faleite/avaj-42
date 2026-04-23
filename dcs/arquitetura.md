@@ -31,6 +31,7 @@ Usado em: `AircraftFactory.newAircraft()`\
 Intenção: definir uma interface para criar objetos, mas deixar
 as subclasses decidirem qual classe instanciar. 
 O Factory Method permite adiar a instanciação para as subclasses.
+Também conhecido como: `Virtual Constructor`
 ```
 
 ```java

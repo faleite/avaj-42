@@ -1,5 +1,7 @@
 # Estudo
 
+## Capítulo 1 — Introdução
+
 ## Capítulo 3 — Singleton
 Página 127 do livro.
 
@@ -28,3 +30,26 @@ public static WeatherProvider getInstance() {
 ```
 
 **Quando NÃO usar Singleton** — o livro discute as desvantagens. Singleton dificulta testes unitários porque cria estado global.
+
+## Capítulo 3 — Factory Method
+Página 107 do livro.
+
+```java
+public class Creator {
+
+    // Em Java, métodos não estáticos são virtuais por padrão
+    public Product create(ProductId id) {
+        if (id == ProductId.MINE) {
+            return new MyProduct();
+        }
+        
+        if (id == ProductId.YOURS) {
+            return new YourProduct();
+        }
+        
+        // Repetir para os demais produtos...
+
+        return null; // Equivalente ao 'return 0' em C++ para ponteiros
+    }
+}
+```

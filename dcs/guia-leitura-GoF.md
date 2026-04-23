@@ -80,7 +80,7 @@ O livro mostra quando cada um se aplica — vale a leitura comparativa.
 ---
 
 ### Capítulo 5 — Observer
-Página 293 do livro. Este é o mais rico para estudar.
+Página 269 do livro. Este é o mais rico para estudar.
 
 O que estudar além do que você já fez:
 
