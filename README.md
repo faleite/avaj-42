@@ -19,8 +19,17 @@ object-oriented design patterns | - |
 - Compile o projeto executando os comandos abaixo na raiz da pasta do seu projeto.
 
 ```bash
+find * -name "*.java" > sources.txt
+javac -d out @sources.txt
+java -cp out com.faaraujo.avaj.simulator.Simulator
+java -cp out com.faaraujo.avaj.simulator.Simulator scenario-b.txt
+
+```
+
+```bash
 $ find * -name "*.java" > sources.txt
 $ javac @sources.txt
+java com.faaraujo.avaj.simulator.Simulator <argument>
 ```
 
 ## UML diagram
@@ -136,8 +145,8 @@ comece com os padrões mais simples e mais comuns:*
 - Adapter (140)
 - Composite (160)
 - Decorator (170)
-- Factory Method (112)
-- Observer (274)
+- *Factory Method (112)*
+- *Observer (274)*
 - Strategy (292)
 - Template Method (301)
 

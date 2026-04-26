@@ -25,12 +25,30 @@ O subject pede exatamente isso — *"he knows this will not be the final version
 
 ---
 
-## Os 3 Padrões que Você Implementou
+## Os 3 Padrões que foram implementados
 
-### Capítulo 3 — Singleton
-Página 125 do livro.
+## Singleton
+Capítulo 3 — Página 127 do livro.\
+*🔵 Creational Patterns*\
+*Como objetos são criados*
 
-O que estudar além do que você já fez:
+Usado em: `WeatherProvider`, `AircraftFactory`, `Logger`, `Parser`\
+[A teoria em video](https://youtu.be/x9h8MgAvi_I?si=mBDIdhGlsnMUIH3F)
+
+```
+Intenção: garantir que uma classe tenha apenas uma instância
+e fornecer um ponto global de acesso a ela.
+```
+
+> Muitos padrões podem ser implementados usando Singleton. Ver Abstract Factory (95),
+Builder (104) e Prototype (121).
+
+Você aplicou o padrão clássico em todos:
+```java
+private static WeatherProvider instance;
+private WeatherProvider() {}
+public static WeatherProvider getInstance() { ... }
+```
 
 **Problema do Singleton em ambiente multithread** — seu `getInstance()` atual não é thread-safe:
 ```java
@@ -58,10 +76,46 @@ public static WeatherProvider getInstance() {
 
 ---
 
-### Capítulo 3 — Factory Method
-Página 107 do livro.
+## Factory Method
+Capítulo 3 — Página 107 do livro.
 
-O que estudar além do que você já fez:
+Usado em: `AircraftFactory.newAircraft()`\
+[A teoria em video](https://youtu.be/1rB0PhvAwiU?si=jFWmjDP8kxKOMa1K)
+
+```
+Intenção: definir uma interface para criar objetos, mas deixar
+as subclasses decidirem qual classe instanciar. 
+O Factory Method permite adiar a instanciação para as subclasses.
+Também conhecido como: `Virtual Constructor`
+```
+
+```java
+// O cliente não sabe qual classe concreta está sendo criada
+Flyable aircraft = AircraftFactory.getInstance()
+    .newAircraft("Balloon", "B1", coordinates);
+```
+
+```java
+public class Creator {
+
+    // Em Java, métodos não estáticos são virtuais por padrão
+    public Product create(ProductId id) {
+        if (id == ProductId.MINE) {
+            return new MyProduct();
+        }
+        
+        if (id == ProductId.YOURS) {
+            return new YourProduct();
+        }
+        
+        // Repetir para os demais produtos...
+
+        return null; // Equivalente ao 'return 0' em C++ para ponteiros
+    }
+}
+```
+
+O `Simulator` nunca faz `new Balloon()` diretamente — sempre delega para a factory.
 
 **Factory Method vs Abstract Factory** — você implementou Factory Method. Abstract Factory é o próximo nível:
 
@@ -78,9 +132,26 @@ Abstract Factory:
 O livro mostra quando cada um se aplica — vale a leitura comparativa.
 
 ---
+### 🟢 Behavioral Patterns — Como objetos se comunicam
+## Observer
+Capítulo 5 — Página 269 do livro.\
+Este é o mais rico para estudar.
 
-### Capítulo 5 — Observer
-Página 269 do livro. Este é o mais rico para estudar.
+Usado em: `Tower`, `WeatherTower`, `Flyable`
+
+```
+Intenção: definir uma dependência um-para-muitos entre objetos,
+de modo que quando um objeto muda de estado, todos os seus
+dependentes são notificados automaticamente.
+```
+
+O fluxo completo no seu projeto:
+
+```
+WeatherTower.changeWeather()     ← Subject muda estado
+    → Tower.conditionChanged()   ← notifica observers
+        → Flyable.updateConditions()  ← cada Observer reage
+```
 
 O que estudar além do que você já fez:
 
@@ -105,7 +176,96 @@ O livro explica formalmente por que isso é necessário.
 
 ---
 
-## Próximos Padrões Recomendados
+## Princípios de Arquitetura Aplicados
+
+### Single Responsibility Principle (SRP)
+Cada classe tem exatamente um motivo para mudar:
+
+| Classe | Responsabilidade única |
+|---|---|
+| `Coordinates` | Representar uma posição 3D |
+| `WeatherProvider` | Gerar clima por coordenada |
+| `AircraftFactory` | Criar aeronaves |
+| `Parser` | Interpretar o arquivo de cenário |
+| `Logger` | Gravar mensagens em arquivo |
+| `Simulation` | Orquestrar o fluxo da simulação |
+| `Simulator` | Ponto de entrada da aplicação |
+
+---
+
+### Separação em Camadas
+Sua estrutura de pacotes reflete camadas bem definidas:
+
+```
+simulator/          ← orquestração (Simulation, Simulator)
+├── model/          ← domínio (entidades e contratos)
+├── tower/          ← infraestrutura de notificação
+├── factory/        ← criação de objetos
+├── provider/       ← fonte de dados
+├── util/           ← utilitários transversais
+└── exceptions/     ← contratos de erro
+```
+
+---
+
+### Program to interfaces, not implementations
+*Princípio fundamental do GoF, introdução*
+
+`Tower` nunca conhece `Balloon`, `JetPlane` ou `Helicopter` — só conhece `Flyable`:
+
+```java
+// Tower.java
+private List<Flyable> observers;  // interface, não classe concreta
+```
+
+Isso permite adicionar um novo tipo de aeronave sem tocar em `Tower`.
+
+---
+
+## 3. O que você construiu na prática
+
+```
+scenario.txt
+     ↓
+Simulator.main()          ← ponto de entrada
+     ↓
+Simulation.run()          ← orquestração
+     ↓
+Parser                    ← leitura e validação
+     ↓
+AircraftFactory           ← Factory Pattern
+     ↓
+WeatherTower              ← Observer Pattern (Subject)
+     ↓
+Balloon/JetPlane/         ← Observer Pattern (Observers)
+Helicopter
+     ↓
+WeatherProvider           ← Singleton Pattern
+     ↓
+Logger                    ← Singleton Pattern
+     ↓
+simulation.txt
+```
+
+---
+
+## 🏆 Conclusão
+
+Você implementou **3 dos 23 padrões GoF** em um projeto coeso, compilável via terminal, sem frameworks, com arquitetura em camadas e princípios SOLID aplicados. Exatamente o que o subject pede.
+
+Se quiser se aprofundar, o livro do GoF apresenta esses padrões nesta ordem de estudo recomendada para iniciantes: **Singleton → Factory Method → Observer → Strategy → Decorator**. Os dois próximos seriam naturais evoluções deste projeto. 🚀
+
+---
+
+## O que os Padrões Extras te Dariam
+Não para o subject — mas para o seu crescimento:
+```txt
+Template Method → eliminaria duplicação em updateConditions()
+Strategy       → tornaria WeatherProvider extensível
+Decorator      → permitiria compor comportamentos em runtime
+```
+
+# Próximos Padrões Recomendados
 
 Depois de consolidar os três que você usou, estes são os mais naturais para evoluir o projeto:
 

@@ -7,16 +7,19 @@ import com.faaraujo.avaj.simulator.model.Coordinates;
 
 public class Parser {
 
-  private static Parser instance;
+  private static volatile Parser instance;
 
   private Parser() {
 
   }
 
   public static Parser getInstance() {
-
-    if (instance == null) {
-      instance = new Parser();
+   if (instance == null) {
+      synchronized (Parser.class) {
+        if (instance == null) {
+          instance = new Parser();
+        }
+      }
     }
     return instance;
   }

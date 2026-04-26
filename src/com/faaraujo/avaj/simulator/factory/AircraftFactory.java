@@ -1,11 +1,12 @@
 package com.faaraujo.avaj.simulator.factory;
 
 import com.faaraujo.avaj.simulator.model.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class AircraftFactory {
 
-  private static AircraftFactory instance;
-  private static long idGenerate = 0;
+  private static volatile AircraftFactory instance;
+  private static final AtomicLong idGenerate = new AtomicLong(0);
 
   private AircraftFactory() {
 
@@ -16,13 +17,13 @@ public class AircraftFactory {
 
     switch (type) {
       case "jetplane":
-        flyable = new JetPlane(++idGenerate, name, coordinates);
+        flyable = new JetPlane(idGenerate.incrementAndGet(), name, coordinates);
         break;
       case "helicopter":
-        flyable = new Helicopter(++idGenerate, name, coordinates);
+        flyable = new Helicopter(idGenerate.incrementAndGet(), name, coordinates);
         break;
       case "balloon":
-        flyable = new Balloon(++idGenerate, name, coordinates);
+        flyable = new Balloon(idGenerate.incrementAndGet(), name, coordinates);
         break;
     }
 
@@ -34,11 +35,13 @@ public class AircraftFactory {
   }
 
   public static AircraftFactory getInstance() {
-
     if (instance == null) {
-      instance = new AircraftFactory();
+      synchronized (AircraftFactory.class) {
+        if (instance == null) {
+          instance = new AircraftFactory();
+        }
+      }
     }
-
     return instance;
   }
 }
