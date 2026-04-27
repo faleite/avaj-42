@@ -15,9 +15,9 @@ Factory design patterns | - |
 UML class diagram | - |
 object-oriented design patterns | - |
 
-
 - Compile o projeto executando os comandos abaixo na raiz da pasta do seu projeto.
 
+*Compilacao limpa*
 ```bash
 find * -name "*.java" > sources.txt
 javac -d out @sources.txt
@@ -26,6 +26,7 @@ java -cp out com.faaraujo.avaj.simulator.Simulator scenario-b.txt
 
 ```
 
+*Compilacao do Subject*
 ```bash
 $ find * -name "*.java" > sources.txt
 $ javac @sources.txt
@@ -372,27 +373,39 @@ java com.faaraujo.avaj.simulator.Simulator
 ## Messages about weather
 ### 🎈 Balloon
 SUN: "Perfect day to do absolutely nothing but float."
+*SOL: "Dia perfeito para não fazer absolutamente nada a não ser flutuar."*
 
 RAIN: "I’m basically a giant, colorful, leaking umbrella now."
+*CHUVA: "Eu sou basicamente um guarda-chuva gigante, colorido e com vazamento agora."*
 
 FOG: "I can't see the ground, but at least the birds can't see me."
+*NEVOEIRO: "Não consigo ver o chão, mas pelo menos os pássaros não conseguem me ver."*
 
 SNOW: "Help, I’m becoming a giant frozen blueberry!"
+*NEVE: "Socorro, estou virando um mirtilo congelado gigante!"*
 
 ### ✈️ JetPlane
 SUN: "Clear skies! Time to break the sound barrier and some windows."
+*SOL: "Céu limpo! Hora de quebrar a barreira do som e algumas janelas."*
 
 RAIN: "Wipers on max, but I’m still faster than the clouds."
+*CHUVA: "Limpadores no máximo, mas ainda sou mais rápido que as nuvens."*
 
 FOG: "Flying blind, but hey, that's what the expensive buttons are for."
+*NEVOEIRO: "Voando às cegas, mas ei, é para isso que servem os botões caros."*
 
 SNOW: "Engines are hot, but my wings are turning into popsicles."
+*NEVE: "Os motores estão quentes, mas minhas asas estão virando picolés."*
 
 ### 🚁 Helicopter
 SUN: "Spinning fast enough to chop the sunlight into pieces."
+*SOL: "Girando rápido o suficiente para picar a luz do sol em pedaços."*
 
 RAIN: "It's like flying inside a giant, noisy washing machine."
+*CHUVA: "É como voar dentro de uma máquina de lavar gigante e barulhenta."*
 
 FOG: "Static everywhere; I hope that tree isn't where I think it is."
+*NEVOEIRO: "Estática por toda parte; espero que aquela árvore não esteja onde eu acho que está."*
 
 SNOW: "Note to self: Being a giant ceiling fan in a blizzard is a bad idea."
+*NEVE: "Nota mental: ser um ventilador de teto gigante em uma nevasca é uma má ideia."*

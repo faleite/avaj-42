@@ -19,7 +19,7 @@ public class Simulation {
 
     if (args.length != 1) {
       System.err.println("Error: Expected 1 argument, but received " + args.length + ".");
-      System.err.println("Usage: java <classpath> com.faaraujo.avaj.simulator.Simulator <scenario_file>");
+      System.err.println("Usage: java com.faaraujo.avaj.simulator.Simulator <scenario_file>");
       System.exit(1);
     }
 
