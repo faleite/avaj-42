@@ -1,3 +1,36 @@
+## UML IMAGE
+<img src="my-puml.svg" widht=680>
+
+## RoadMap
+### Model
+1. Coordinates
+2. Aircraft
+3. Flyable
+4. Aircrafts:
+  1. Ballon
+  2. JetPlane
+  3. Helicopter
+### Tower
+1. Tower
+2. WeatherTower
+### Provider
+1. WeatherProvider
+### Factory
+1. AircraftFactory
+### Utils
+1. Logger
+2. Parser
+### Main
+1. Simulator
+2. Simulation
+### Exceptions
+1. ScenarioException
+
+## Volatile
+O volatile atua como uma barreira de memória que força o Java a completar toda a construção do objeto antes de permitir que qualquer outra thread veja a variável instance como algo diferente de null.
+
+Curiosidade: Sem o volatile, esse código funcionaria 99% do tempo, mas os 1% de falha seriam bugs extremamente difíceis de reproduzir e debugar!
+
  - Não: não protege o comportamento interno da classe. Exemplos:
   - [x] Logger: writer pode ser null; log() faz I/O não sincronizado → ainda precisa sincronizar init/log, usar executor ou checar writer atomically.
   - [x] AircraftFactory: ++idGenerate não é atômico → trocar por AtomicLong.incrementAndGet() ou sincronizar criação.
