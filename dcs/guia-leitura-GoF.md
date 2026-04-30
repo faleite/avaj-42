@@ -6,6 +6,7 @@ O livro se chama **"Design Patterns: Elements of Reusable Object-Oriented Softwa
 
 ## Resources
 [Videos Padrões de Projeto](https://youtube.com/playlist?list=PLbIBj8vQhvm0VY5YrMrafWaQY2EnJ3j8H&si=WpOqXhQ9Gu-kSnkW)
+[guru](https://refactoring.guru/)
 
 ## Antes dos Padrões — Leia Primeiro
 

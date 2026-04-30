@@ -76,6 +76,42 @@ class AircraftFactory <<Singleton>>
 {static} +AircraftFactory getInstance()
 }
 
+class Logger
+{
+{static} -Logger instance
+-BufferedWriter writer
+-Logger()
+{static} +Logger getInstance()
++void log(String message)
++void init(String filename)
+}
+
+class Parser
+{
+{static} -Parser instance
+-Parser()
+{static} +Parser getInstance()
++int getNumberOfSimulations(String line)
++Flyable parseAircraft(String lines)
+}
+
+class Simulation
+{
+-String scenarioFile
+-int simulations
++Simulation(String[] args)
++void initLogFile()
++void run()
+-void loadScenario(BufferedReader reader)
+}
+
+class ScenarioException
+{
++ScenarioException(String message)
++ScenarioException(String message, Throwable cause)
+}
+
+
 Coordinates -* Aircraft
 Flyable <|.. Aircraft
 Aircraft <|-- Balloon
@@ -86,4 +122,8 @@ Tower <|-- WeatherTower
 
 WeatherTower -[hidden]- WeatherProvider
 Helicopter -[hidden]- AircraftFactory
+AircraftFactory -[hidden]- Logger
+AircraftFactory -[hidden]- Parser
+AircraftFactory -[hidden]- Simulation
+AircraftFactory -[hidden]- ScenarioException
 @enduml
